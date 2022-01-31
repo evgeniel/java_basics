@@ -8,6 +8,22 @@ public class Main {
         basket.add("Картофель", 70, 2, 2000.0);
         basket.print("Корзина:");
 
+        Basket basket1 = new Basket();
+        basket1.add("Сливки", 30);
+        basket1.add("Батон", 45, 3);
+        basket1.add("Лук", 90, 600.0);
+        basket1.add("Репа", 88, 4, 1500.0);
+        basket1.print("___________________________\nКорзина:");
+
+        Basket.calculationAverageTotalPriceProductBasket();
+        Basket.calculationAveragePriceBasket();
+
+        System.out.println("___________________________\nКоличество корзин: " + Basket.getCountBasket());
+        System.out.println("Общая стоимость всех товаров: " + Basket.getTotalCostProduct());
+        System.out.println("Общее количество всех товаров: " + Basket.getTotalCountProduct());
+        System.out.println("Средняя цена товара во всех корзинах: " + Basket.getAverageTotalPriceProductBasket());
+        System.out.println("Средняя стоимость корзины: " + Basket.getAveragePriceBasket());
+
         System.out.println("==================================================");
 
         Arithmetic arithmetic = new Arithmetic(23, 57);

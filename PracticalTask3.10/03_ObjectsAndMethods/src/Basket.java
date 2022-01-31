@@ -1,13 +1,17 @@
 public class Basket {
 
-    private static int count = 0;
+    private static int countBasket = 0;
     private String items = "";
     private int totalPrice = 0;
     private int limit;
     private double totalWeight = 0;//гр.
+    private static int totalCountProduct = 0;
+    private static int totalCostProduct = 0;
+    private static int averageTotalPriceProductBasket = 0;
+    private static int averagePriceBasket = 0;
 
     public Basket() {
-        increaseCount(1);
+        increaseCountBasket(1);
         items = "Список товаров:";
         this.limit = 1000000;
     }
@@ -23,12 +27,44 @@ public class Basket {
         this.totalPrice = totalPrice;
     }
 
-    public static int getCount() {
-        return count;
+    public static int getCountBasket() {
+        return countBasket;
     }
 
-    public static void increaseCount(int count) {
-        Basket.count = Basket.count + count;
+    public static void increaseCountBasket(int countBasket) {
+        Basket.countBasket = Basket.countBasket + countBasket;
+    }
+
+    public static int getTotalCountProduct() {
+        return totalCountProduct;
+    }
+
+    public static void increaseTotalCountProduct(int totalCountProduct) {
+        Basket.totalCountProduct = Basket.totalCountProduct + totalCountProduct;
+    }
+
+    public static int getTotalCostProduct() {
+        return totalCostProduct;
+    }
+
+    public static void increaseTotalCostProduct (int totalCostProduct) {
+        Basket.totalCostProduct = Basket.totalCostProduct + totalCostProduct;
+    }
+
+    public static int getAverageTotalPriceProductBasket() {
+        return averageTotalPriceProductBasket;
+    }
+
+    public static void calculationAverageTotalPriceProductBasket() {
+        Basket.averageTotalPriceProductBasket = getTotalCostProduct() / getTotalCountProduct();
+    }
+
+    public static int getAveragePriceBasket() {
+        return averagePriceBasket;
+    }
+
+    public static void calculationAveragePriceBasket() {
+        Basket.averagePriceBasket = getTotalCostProduct() / getCountBasket();
     }
 
     public void add(String name, int price) { add(name, price, 1); }
@@ -54,6 +90,8 @@ public class Basket {
                 count + " шт. - " + price + " - " + weight + " гр.";
         totalPrice = totalPrice + count * price;
         totalWeight = totalWeight + count * weight;
+        increaseTotalCostProduct(count * price);
+        increaseTotalCountProduct(count);
     }
 
     public void add(String name, int price, int count) { add(name, price, count, 0); }

@@ -15,5 +15,6 @@ public class Main {
                 .setDeliveryAddress("г. Ульяновск, ул. Радищева, д. 140")
                 .setWeight(5).setDimensions(dimensions1);
         System.out.println(infoCargoCourierService1);
+        System.out.println(infoCargoCourierService);
     }
 }
